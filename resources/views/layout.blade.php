@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
     <meta charset="UTF-8">
@@ -7,39 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>@yield('title')</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>@yield('title') - Hathaiphat</title>
 </head>
 
-<nav class="navbar navbar-expand-lg " style="background-color: #e7b8df;" data-bs-theme="light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Hathaiphat  Phakdeekaew</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">หน้าแรก</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('abouts')}}">เกี่ยวกับเรา</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('blogs')}}">บทความ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">เขียนบทความ</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
 <body>
-    <div class="container py-3">
-       @yield('content')
-    </div>
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">✨ Hathaiphat</a>
+            <nav>
+                <a href="/" class="{{ Request::is('/') ? 'active' : '' }}">หน้าแรก</a>
+                <a href="{{ route('abouts') }}" class="{{ Request::is('abouts') ? 'active' : '' }}">เกี่ยวกับเรา</a>
+                <a href="{{ route('blogs') }}" class="{{ Request::is('blogs') ? 'active' : '' }}">บทความ</a>
+                <a href="/student/68152310265-1" class="{{ Request::is('student/*') ? 'active' : '' }}">ประวัตินักศึกษา</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            @yield('content')
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Hathaiphat Pakdeekaew. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
